@@ -31,6 +31,7 @@ export const Chromecast: NextPage = () => {
 
   return (
     <div>
+      <h1 style={{ color: '#eeeeee' }}>TEST</h1>
       <ul>
         {messages.map((message, i) => (
           <li key={message + '_-_' + i}>{message}</li>

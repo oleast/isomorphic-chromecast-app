@@ -2,27 +2,12 @@ import type { AppProps } from 'next/app';
 import Head from 'next/head';
 import { FC } from 'react';
 
-import { CHROMECAST_APP_ID } from 'common/constants';
-
 import 'cssremedy/css/remedy.css';
 import 'cssremedy/css/reminders.css';
 import 'cssremedy/css/quotes.css';
 
 type Props = AppProps & {
   err?: Error;
-};
-
-const initializeCastApi = function () {
-  cast.framework.CastContext.getInstance().setOptions({
-    receiverApplicationId: CHROMECAST_APP_ID,
-    autoJoinPolicy: chrome.cast.AutoJoinPolicy.ORIGIN_SCOPED,
-  });
-};
-
-globalThis['__onGCastApiAvailable'] = function (isAvailable) {
-  if (isAvailable) {
-    initializeCastApi();
-  }
 };
 
 const App: FC<Props> = ({ Component, pageProps, err }) => {
