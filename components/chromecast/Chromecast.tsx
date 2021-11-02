@@ -1,6 +1,8 @@
 import { NextPage } from 'next';
 import { useCallback, useEffect, useState } from 'react';
 
+import _s from './Chromecast.module.scss';
+
 export const Chromecast: NextPage = () => {
   const [messages, setMessages] = useState(['First message']);
 
@@ -30,7 +32,7 @@ export const Chromecast: NextPage = () => {
   }, [handleMessage]);
 
   return (
-    <div>
+    <div className={_s.chromecastApp}>
       <h1 style={{ color: '#eeeeee' }}>TEST</h1>
       <ul>
         {messages.map((message, i) => (

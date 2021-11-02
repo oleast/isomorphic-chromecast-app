@@ -47,6 +47,7 @@ class ChromecastBroker implements MessageBroker {
 
   sendData<TData = unknown>(data: TData) {
     this.initialize();
+    console.log(this.#castSession);
     this.#castSession.sendMessage(this.#namespace, data);
   }
 }
