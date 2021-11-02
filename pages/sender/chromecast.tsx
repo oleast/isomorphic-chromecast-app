@@ -7,6 +7,9 @@ import { ChromecastSender } from 'components/chromecast-sender';
 
 const GoogleCastLauncher = 'google-cast-launcher' as 'div';
 
+let isCastApiAvailable = false;
+let isCastApiAvailableListener: null | ((isAvailable: boolean) => void) = null;
+
 const initializeCastApi = () => {
   cast.framework.CastContext.getInstance().setOptions({
     receiverApplicationId: CHROMECAST_APP_ID,
@@ -17,18 +20,15 @@ const initializeCastApi = () => {
 globalThis['__onGCastApiAvailable'] = (isAvailable) => {
   if (isAvailable) {
     initializeCastApi();
+    isCastApiAvailable = isAvailable;
+    isCastApiAvailableListener?.(isAvailable);
   }
 };
 
 const ChromecastSenderPage: NextPage = () => {
-  const [isCastAvailable, setIsCastAvailable] = useState<boolean>(false);
+  const [isCastAvailable, setIsCastAvailable] =
+    useState<boolean>(isCastApiAvailable);
   const googleCastRef = useRef<HTMLDivElement | null>(null);
-
-  useEffect(() => {
-    if (googleCastRef.current) {
-      googleCastRef.current.style.display = 'block';
-    }
-  }, [googleCastRef]);
 
   const handleCastAvailable = useCallback(
     (isAvailable: boolean) => {
@@ -38,7 +38,7 @@ const ChromecastSenderPage: NextPage = () => {
   );
 
   useEffect(() => {
-    globalThis['__onGCastApiAvailable'] = handleCastAvailable;
+    isCastApiAvailableListener = handleCastAvailable;
   }, [handleCastAvailable]);
 
   useEffect(() => {

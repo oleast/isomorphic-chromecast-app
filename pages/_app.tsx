@@ -5,6 +5,9 @@ import { FC } from 'react';
 import 'cssremedy/css/remedy.css';
 import 'cssremedy/css/reminders.css';
 import 'cssremedy/css/quotes.css';
+import 'common/styles/global.scss';
+
+import _s from './_app.module.scss';
 
 type Props = AppProps & {
   err?: Error;
@@ -23,7 +26,7 @@ const App: FC<Props> = ({ Component, pageProps, err }) => {
         <link rel="manifest" href="/manifest.json" />
         <meta name="theme-color" content="#ffffff" />
       </Head>
-      <main>
+      <main className={_s.main}>
         <noscript>
           Denne nettsiden bruker JavaScript for all interaktivitet, for å dra
           full nytte av nettsiden må du derfor aktivere JavaScript.
