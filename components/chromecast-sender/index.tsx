@@ -1,4 +1,5 @@
-import { FC, useCallback, useEffect, useState } from 'react';
+import { useCastEventListener } from 'hooks/useCastEventListener';
+import { FC, useCallback, useState } from 'react';
 
 export const ChromecastSender: FC = () => {
   const [sessionState, setSessionState] = useState<cast.framework.SessionState>(
@@ -12,18 +13,10 @@ export const ChromecastSender: FC = () => {
     [setSessionState]
   );
 
-  useEffect(() => {
-    const context = cast.framework.CastContext.getInstance();
-    context.addEventListener(
-      cast.framework.CastContextEventType.SESSION_STATE_CHANGED,
-      handleCastSessionStateChanged
-    );
-    return () =>
-      context.removeEventListener(
-        cast.framework.CastContextEventType.SESSION_STATE_CHANGED,
-        handleCastSessionStateChanged
-      );
-  }, [handleCastSessionStateChanged]);
+  useCastEventListener(
+    cast.framework.CastContextEventType.SESSION_STATE_CHANGED,
+    handleCastSessionStateChanged
+  );
 
   return <div>{sessionState}</div>;
 };
