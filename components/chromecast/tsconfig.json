@@ -1,10 +1,10 @@
 {
   "extends": "../../tsconfig.json",
   "include": [
-    "next-env.d.ts",
-    "**/*.ts",
-    "**/*.tsx",
-    "node_modules/@types/chromecast-caf-receiver"
+    "../../next-env.d.ts",
+    "../../**/*.ts",
+    "../../**/*.tsx",
+    "../../node_modules/@types/chromecast-caf-receiver"
   ],
-  "exclude": ["node_modules/@types/chromecast-caf-sender"]
+  "exclude": ["../../node_modules/@types/chromecast-caf-sender"]
 }
