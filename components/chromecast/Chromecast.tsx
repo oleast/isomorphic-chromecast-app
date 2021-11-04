@@ -28,7 +28,9 @@ export const Chromecast: NextPage = () => {
     context.start();
     // eslint-disable-next-line @typescript-eslint/ban-ts-comment
     // @ts-ignore
-    cast.receiver.logger.setLevelValue(cast.receiver.LoggerLevel.DEBUG);
+    cast.framework.CastReceiverContext.getInstance().setLoggerLevel(
+      cast.framework.LoggerLevel.DEBUG
+    );
     return () => {
       context.removeCustomMessageListener('urn:x-cast:COMMON', handleMessage);
     };
