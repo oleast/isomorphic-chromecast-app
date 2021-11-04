@@ -4,8 +4,7 @@ import { useRef } from 'react';
 import { StateSyncBroker } from 'components/sync/StateSyncBroker';
 import { ChromecastSender } from 'components/chromecast-sender';
 import { useCastAvailability } from 'hooks/useCastAvailability';
-
-const GoogleCastLauncher = 'google-cast-launcher' as 'div';
+import { GoogleCastLauncher } from 'components/chromecast-sender/GoogleCastLauncher';
 
 const ChromecastSenderPage: NextPage = () => {
   const isCastAvailable = useCastAvailability();
