@@ -14,7 +14,6 @@ export const ChromecastSender: FC = () => {
 
   useEffect(() => {
     const context = cast.framework.CastContext.getInstance();
-    console.log(context);
     context.addEventListener(
       cast.framework.CastContextEventType.SESSION_STATE_CHANGED,
       handleCastSessionStateChanged
