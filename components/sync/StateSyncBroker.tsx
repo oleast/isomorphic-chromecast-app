@@ -11,7 +11,7 @@ export const StateSyncBroker: FC = () => {
 
   const onSubmit: FormEventHandler<HTMLFormElement> = (event) => {
     event.preventDefault();
-    postMessageToBroker('chromecast', message);
+    postMessageToBroker('chromecast', { message });
   };
 
   return (

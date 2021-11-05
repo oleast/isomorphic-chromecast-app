@@ -6,8 +6,8 @@ import _s from './Chromecast.module.scss';
 export const Chromecast: NextPage = () => {
   const [messages, setMessages] = useState(['First message']);
 
-  const handleMessage: SystemEventHandler = useCallback(
-    (event) => {
+  const handleMessage = useCallback(
+    (event: CustomMessageEvent<{ message: string }>) => {
       const data =
         typeof event.data === 'string'
           ? event.data
@@ -47,3 +47,9 @@ export const Chromecast: NextPage = () => {
     </div>
   );
 };
+
+interface CustomMessageEvent<TData> extends Event {
+  data: TData;
+  senderId: string;
+  type: string;
+}
