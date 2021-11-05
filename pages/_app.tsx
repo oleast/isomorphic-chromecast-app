@@ -8,6 +8,7 @@ import 'cssremedy/css/quotes.css';
 import 'common/styles/global.scss';
 
 import _s from './_app.module.scss';
+import { StateProvider } from 'store/Provider';
 
 type Props = AppProps & {
   err?: Error;
@@ -26,13 +27,15 @@ const App: FC<Props> = ({ Component, pageProps, err }) => {
         <link rel="manifest" href="/manifest.json" />
         <meta name="theme-color" content="#ffffff" />
       </Head>
-      <main className={_s.main}>
-        <noscript>
-          Denne nettsiden bruker JavaScript for all interaktivitet, for å dra
-          full nytte av nettsiden må du derfor aktivere JavaScript.
-        </noscript>
-        <Component {...modifiedPageProps} />
-      </main>
+      <StateProvider>
+        <main className={_s.main}>
+          <noscript>
+            Denne nettsiden bruker JavaScript for all interaktivitet, for å dra
+            full nytte av nettsiden må du derfor aktivere JavaScript.
+          </noscript>
+          <Component {...modifiedPageProps} />
+        </main>
+      </StateProvider>
     </>
   );
 };
