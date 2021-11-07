@@ -1,9 +1,3 @@
-.container {
-  grid-template-columns: min-content min-content min-content;
-  grid-template-areas: 'name separator domain';
-  display: grid;
-}
-
 @keyframes switchPlacesName {
   0% {
     transform: translateX(105%);
@@ -22,6 +16,18 @@
   }
   40% {
     transform: translateX(-125%);
+  }
+  70% {
+    transform: translateX(0%);
+  }
+}
+
+@keyframes offsetContainer {
+  0% {
+    transform: translateX(-28%);
+  }
+  40% {
+    transform: translateX(-28%);
   }
   70% {
     transform: translateX(0%);
@@ -50,6 +56,15 @@
   animation-iteration-count: none;
   animation-direction: alternate;
   animation-play-state: running;
+}
+
+.container {
+  @extend .switchPlaceAnimation;
+  animation-name: offsetContainer;
+
+  grid-template-columns: min-content min-content min-content;
+  grid-template-areas: 'name separator domain';
+  display: grid;
 }
 
 .name {
