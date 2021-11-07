@@ -7,15 +7,19 @@ declare global {
       'google-cast-launcher': GoogleCastLauncherAttributes;
     }
 
-    type GoogleCastLauncherAttributes = DetailedHTMLProps<
-      HTMLAttributes<HTMLElement>,
-      HTMLElement
-    >;
+    interface GoogleCastLauncherAttributes
+      extends DetailedHTMLProps<HTMLAttributes<HTMLElement>, HTMLElement> {
+      class?: string;
+    }
   }
 }
 
-export const GoogleCastLauncher = forwardRef<HTMLElement>((props, ref) => {
-  return <google-cast-launcher {...props} ref={ref} />;
+export const GoogleCastLauncher = forwardRef<
+  HTMLElement,
+  JSX.GoogleCastLauncherAttributes
+>((props, ref) => {
+  const { className, ...restProps } = props;
+  return <google-cast-launcher class={className} {...restProps} ref={ref} />;
 });
 
 GoogleCastLauncher.displayName = 'GoogleCastLauncher';

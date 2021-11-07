@@ -1,27 +1,17 @@
 import { NextPage } from 'next';
 import Head from 'next/head';
-import { useRef } from 'react';
-import { StateSyncBroker } from 'components/sync/StateSyncBroker';
 import { ChromecastSender } from 'components/chromecast-sender';
 import { useCastAvailability } from 'hooks/useCastAvailability';
-import { GoogleCastLauncher } from 'components/chromecast-sender/GoogleCastLauncher';
 
 const ChromecastSenderPage: NextPage = () => {
-  const isCastAvailable = useCastAvailability();
-  const googleCastRef = useRef<HTMLDivElement | null>(null);
+  const isCastAvailable = useCastAvailability(false);
 
   return (
     <>
       <Head>
         <script src="https://www.gstatic.com/cv/js/sender/v1/cast_sender.js?loadCastFramework=1" />
       </Head>
-      <GoogleCastLauncher ref={googleCastRef} />
-      {isCastAvailable ? (
-        <>
-          <StateSyncBroker />
-          <ChromecastSender />
-        </>
-      ) : null}
+      {isCastAvailable ? <ChromecastSender /> : null}
     </>
   );
 };

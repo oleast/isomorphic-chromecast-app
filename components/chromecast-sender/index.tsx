@@ -1,7 +1,13 @@
+import { StateSyncBroker } from 'components/sync/StateSyncBroker';
 import { useCastEventListener } from 'hooks/useCastEventListener';
-import { FC, useCallback, useState } from 'react';
+import { FC, MouseEvent, useCallback, useRef, useState } from 'react';
+import { GoogleCastLauncher } from './GoogleCastLauncher';
+
+import _s from './index.module.scss';
 
 export const ChromecastSender: FC = () => {
+  const googleCastRef = useRef<HTMLDivElement | null>(null);
+
   const [sessionState, setSessionState] = useState<cast.framework.SessionState>(
     cast.framework.SessionState.NO_SESSION
   );
@@ -18,5 +24,16 @@ export const ChromecastSender: FC = () => {
     handleCastSessionStateChanged
   );
 
-  return <div>{sessionState}</div>;
+  const handleOuterButtonClick = (event: MouseEvent<HTMLButtonElement>) => {
+    event.preventDefault();
+    googleCastRef.current?.click();
+  };
+
+  return (
+    <div className={_s.castSenderContainer}>
+      <GoogleCastLauncher ref={googleCastRef} className={_s.castLauncher} />
+      <StateSyncBroker />
+      {sessionState}
+    </div>
+  );
 };
