@@ -8,6 +8,7 @@
   --spacing-7: 42px;
   --spacing-8: 48px;
 
+  --font-size-logo: 72px;
   --font-size-xxl: 32px;
   --font-size-xl: 28px;
   --font-size-lg: 24px;
@@ -16,6 +17,7 @@
   --font-size-xs: 14px;
 
   @media screen and (min-width: 800px) {
+    --font-size-logo: 76px;
     --font-size-xxl: 36px;
     --font-size-xl: 30px;
     --font-size-lg: 24px;
@@ -34,25 +36,25 @@
   --hvit: #ffffff;
   --overskyet: #e7e7e7;
   --overskyet50: #f3f3f3;
-  --overskyetKontrast: #cecece;
+  --overskyet-kontrast: #cecece;
   --sol: #fff2ad;
-  --solKontrast: #fff02b;
+  --sol-kontrast: #fff02b;
   --soloppgang: #ffb88d;
-  --soloppgangKontrast: #ff8034;
+  --soloppgang-kontrast: #ff8034;
   --skyfritt: #b1e8ff;
-  --skyfrittKontrast: #43cbff;
+  --skyfritt-kontrast: #43cbff;
   --solnedgang: #ff9999;
-  --solnedgangKontrast: #ff5b5b;
+  --solnedgang-kontrast: #ff5b5b;
   --kveld: #e5b1ff;
-  --kveldKontrast: #8e24c9;
+  --kveld-kontrast: #8e24c9;
   --natt: #6d7abb;
-  --nattKontrast: #162365;
+  --natt-kontrast: #162365;
   --regn: #bccedd;
-  --regnKontrast: #7e9cb9;
+  --regn-kontrast: #7e9cb9;
   --gul: #fff2ad;
-  --gulKontrast: #fff02b;
+  --gul-kontrast: #fff02b;
   --hav: #a1f5e3;
-  --havKontrast: #16dbc4;
+  --hav-kontrast: #16dbc4;
   --grey: #b3b3b3;
   --morgendis: #707070;
 
@@ -64,11 +66,11 @@
   --linkColor: var(--morgendis);
   --linkColorHover: var(--hvit);
   --fadedColor: var(--morgendis);
-  --coolColor: var(--nattKontrast);
+  --coolColor: var(--natt-kontrast);
   --coolColorContrast: var(--hvit);
-  --active: var(--regnKontrast);
+  --active: var(--regn-kontrast);
   --disabled: var(--grey);
-  --error: var(--solnedgangKontrast);
+  --error: var(--solnedgang-kontrast);
   --warning: var(--soloppgang);
 
   /* no-preference and perfers dark should use dark mode version */
@@ -79,9 +81,9 @@
     --linkColor: var(--morgendis);
     --linkColorHover: var(--hvit);
     --fadedColor: var(--morgendis);
-    --coolColor: var(--nattKontrast);
+    --coolColor: var(--natt-kontrast);
     --coolColorContrast: var(--hvit);
-    --active: var(--regnKontrast);
+    --active: var(--regn-kontrast);
   }
 
   @media (prefers-color-scheme: light) {
