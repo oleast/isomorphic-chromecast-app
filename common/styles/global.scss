@@ -26,7 +26,7 @@
     --font-size-xs: 14px;
   }
 
-  --borderRadius: var(--spacing-1);
+  --border-radius: var(--spacing-1);
 
   --svart: #000000;
   --svart70: #4f4f4f;
@@ -59,15 +59,15 @@
   --morgendis: #707070;
 
   /* Define default color scheme for users without support for 'prefers-color-scheme' */
-  --backgroundColor: var(--svart);
-  --borderColor: var(--overskyet);
-  --textColor: var(--overskyet);
-  --lightTextColor: var(--hvit);
-  --linkColor: var(--morgendis);
-  --linkColorHover: var(--hvit);
-  --fadedColor: var(--morgendis);
-  --coolColor: var(--natt-kontrast);
-  --coolColorContrast: var(--hvit);
+  --background-color: var(--svart);
+  --border-color: var(--overskyet);
+  --text-color: var(--overskyet);
+  --lightText-color: var(--hvit);
+  --link-color: var(--morgendis);
+  --link-color-hover: var(--hvit);
+  --faded-color: var(--morgendis);
+  --cool-color: var(--natt-kontrast);
+  --cool-color-ontrast: var(--hvit);
   --active: var(--regn-kontrast);
   --disabled: var(--grey);
   --error: var(--solnedgang-kontrast);
@@ -75,25 +75,25 @@
 
   /* no-preference and perfers dark should use dark mode version */
   @media (prefers-color-scheme: no-preference), (prefers-color-scheme: dark) {
-    --backgroundColor: var(--svart);
-    --lightTextColor: var(--hvit);
-    --textColor: var(--overskyet);
-    --linkColor: var(--morgendis);
-    --linkColorHover: var(--hvit);
-    --fadedColor: var(--morgendis);
-    --coolColor: var(--natt-kontrast);
-    --coolColorContrast: var(--hvit);
+    --background-color: var(--svart);
+    --lightText-color: var(--hvit);
+    --text-color: var(--overskyet);
+    --link-color: var(--morgendis);
+    --link-color-hover: var(--hvit);
+    --faded-color: var(--morgendis);
+    --cool-color: var(--natt-kontrast);
+    --cool-color-ontrast: var(--hvit);
     --active: var(--regn-kontrast);
   }
 
   @media (prefers-color-scheme: light) {
-    --backgroundColor: var(--hvit);
-    --textColor: var(--svart);
-    --linkColor: var(--morgendis);
-    --linkColorHover: var(--svart);
-    --fadedColor: var(--morgendis);
-    --coolColor: var(--skyfritt);
-    --coolColorContrast: var(--svart);
+    --background-color: var(--hvit);
+    --text-color: var(--svart);
+    --link-color: var(--morgendis);
+    --link-color-hover: var(--svart);
+    --faded-color: var(--morgendis);
+    --cool-color: var(--skyfritt);
+    --cool-color-ontrast: var(--svart);
   }
 }
 
@@ -137,8 +137,8 @@ pre {
 }
 
 a {
-  background-color: transparent;
-  color: inherit;
+  background--color: transparent;
+  -color: inherit;
   -webkit-text-decoration: inherit;
   text-decoration: inherit;
 }
@@ -158,7 +158,7 @@ select,
 textarea {
   padding: 0;
   line-height: inherit;
-  color: inherit;
+  -color: inherit;
 }
 
 menu {
