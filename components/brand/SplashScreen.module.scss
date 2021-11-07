@@ -1,0 +1,36 @@
+@keyframes disappear {
+  from {
+    opacity: 1;
+    display: block;
+  }
+  to {
+    opacity: 0;
+    display: none;
+  }
+}
+
+.container {
+  display: grid;
+  min-height: 100vh;
+  min-width: 100vw;
+  justify-content: center;
+  align-items: center;
+  background-color: var(--backgroundColor);
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 9999;
+
+  animation-name: disappear;
+  animation-delay: 4.5s;
+  animation-timing-function: ease-out;
+  animation-duration: 0.5s;
+  animation-fill-mode: forwards;
+  animation-iteration-count: 1;
+  animation-direction: normal;
+  animation-play-state: running;
+}
+
+.logo {
+  font-size: var(--font-size-logo);
+}

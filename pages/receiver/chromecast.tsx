@@ -1,3 +1,4 @@
+import { SplashScreen } from 'components/brand/SplashScreen';
 import { Chromecast } from 'components/chromecast/Chromecast';
 import { NextPage } from 'next';
 import Head from 'next/head';
@@ -10,6 +11,7 @@ const ChromecastReceiverPage: NextPage = () => {
         <script src="//www.gstatic.com/cast/sdk/libs/devtools/debug_layer/caf_receiver_logger.js"></script>
       </Head>
       <Chromecast />
+      <SplashScreen />
     </>
   );
 };
