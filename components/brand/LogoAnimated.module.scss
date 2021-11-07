@@ -1,0 +1,93 @@
+.container {
+  grid-template-columns: min-content min-content min-content;
+  grid-template-areas: 'name separator domain';
+  display: grid;
+}
+
+@keyframes switchPlacesName {
+  0% {
+    transform: translateX(105%);
+  }
+  40% {
+    transform: translateX(115%);
+  }
+  70% {
+    transform: translateX(0%);
+  }
+}
+
+@keyframes switchPlacesDomain {
+  0% {
+    transform: translateX(-105%);
+  }
+  40% {
+    transform: translateX(-125%);
+  }
+  70% {
+    transform: translateX(0%);
+  }
+}
+
+@keyframes appearingSeparator {
+  0% {
+    transform: translateY(-30%);
+    opacity: 0;
+  }
+  63% {
+    transform: translateY(-30%);
+    opacity: 0;
+  }
+  77% {
+    transform: translateY(0%);
+    opacity: 1;
+  }
+}
+
+.switchPlaceAnimation {
+  animation-timing-function: ease-in-out;
+  animation-duration: 4s;
+  animation-delay: 0s;
+  animation-iteration-count: none;
+  animation-direction: alternate;
+  animation-play-state: running;
+}
+
+.name {
+  @extend .switchPlaceAnimation;
+  animation-name: switchPlacesName;
+
+  grid-area: name;
+  color: var(--kveld-kontrast);
+  .faded {
+    color: var(--kveld);
+  }
+}
+
+.separator {
+  grid-area: separator;
+  color: var(--solnedgang-kontrast);
+
+  animation-timing-function: ease-out;
+  animation-duration: 4s;
+  animation-delay: 0s;
+  animation-iteration-count: none;
+  animation-direction: alternate;
+  animation-play-state: running;
+  animation-name: appearingSeparator;
+
+  .faded {
+    color: var(--solnedgang);
+  }
+}
+
+.domain {
+  @extend .switchPlaceAnimation;
+  animation-name: switchPlacesDomain;
+
+  grid-area: domain;
+  color: var(--soloppgang-kontrast);
+
+  .faded {
+    color: var(--soloppgang);
+  }
+}

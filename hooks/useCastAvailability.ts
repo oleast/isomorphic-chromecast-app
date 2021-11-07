@@ -2,9 +2,10 @@ import { useState, useCallback, useEffect } from 'react';
 
 import { castAvailability } from 'utils/castAvailable';
 
-export const useCastAvailability = (): boolean => {
-  const [isCastAvailable, setIsCastAvailable] = useState<boolean>(() =>
-    castAvailability.get()
+export const useCastAvailability = (defaultValue?: boolean): boolean => {
+  const getDefaultValue = () => castAvailability.get();
+  const [isCastAvailable, setIsCastAvailable] = useState<boolean>(
+    defaultValue ?? getDefaultValue
   );
 
   const handleCastAvailable = useCallback(

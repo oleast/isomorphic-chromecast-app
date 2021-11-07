@@ -1,0 +1,23 @@
+.castSenderContainer {
+  display: grid;
+  min-height: 100vh;
+  gap: var(--spacing-2);
+  padding: var(--spacing-3);
+
+  background-color: var(--backgroundColor);
+}
+
+.castLauncher {
+  display: block !important;
+  border-radius: var(--borderRadius);
+  border: 1px solid var(--borderColor);
+  padding: var(--spacing-2);
+  width: 100%;
+  height: 60px;
+  background: unset;
+  outline: 0;
+  border: 0;
+}
+
+.castButton {
+}
