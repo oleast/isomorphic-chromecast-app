@@ -1,0 +1,25 @@
+.carousel {
+  display: flex;
+  gap: var(--spacing-4);
+
+  transform: translateX(var(--x-position));
+  transition-duration: 5s;
+  transition-property: transform;
+  transition-delay: 6s;
+  transform-style: preserve-3d;
+  backface-visibility: visible;
+  position: relative;
+}
+
+.scrollContainer {
+  overflow-x: hidden;
+  max-width: 100%;
+  width: 100%;
+  height: 100%;
+  overflow-y: scroll;
+  overflow-x: hidden;
+  -webkit-overflow-scrolling: touch;
+  perspective: inherit;
+  transform-style: preserve-3d;
+  backface-visibility: visible;
+}

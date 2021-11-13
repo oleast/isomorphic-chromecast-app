@@ -69,3 +69,5 @@ export const {
   playerAdded,
   playerNameUpdated,
 } = playersSlice.actions;
+
+export const playersSelectors = playersAdapter.getSelectors();

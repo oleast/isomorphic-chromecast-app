@@ -11,6 +11,7 @@ export interface Interval {
 export interface GameSettings {
   theme: Theme;
   interval: Interval;
+  raffleListLength: number;
   raffleCount: RaffleCount;
   showCountDown: boolean;
 }
@@ -21,6 +22,7 @@ export const INITIAL_GAME_SETTINGS: GameSettings = {
     min: timeToMilliseconds(3, 'minutes'),
     max: timeToMilliseconds(6, 'minutes'),
   },
+  raffleListLength: 50,
   raffleCount: 1,
   showCountDown: false,
 };

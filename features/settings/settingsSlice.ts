@@ -17,6 +17,9 @@ const settingsSlice = createSlice({
     intervalMaxChanged(state, action: PayloadAction<number>) {
       state.interval.max = action.payload;
     },
+    raffleListLengthChanged(state, action: PayloadAction<number>) {
+      state.raffleListLength = action.payload;
+    },
     showCountDownChanged(state, action: PayloadAction<boolean>) {
       state.showCountDown = action.payload;
     },
@@ -30,4 +33,5 @@ export const {
   intervalMinChanged,
   themeChanged,
   showCountDownChanged,
+  raffleListLengthChanged,
 } = settingsSlice.actions;
