@@ -19,3 +19,9 @@ castAvailability.subscribe((isAvailable) => {
 globalThis.__onGCastApiAvailable = (isAvailable: boolean) => {
   castAvailability.set(isAvailable);
 };
+
+// tell TypeScript that "__onGCastApiAvailable" exists in this project.
+// eslint-disable-next-line @typescript-eslint/no-namespace
+declare namespace globalThis {
+  let __onGCastApiAvailable: (isAvailable: boolean) => void;
+}

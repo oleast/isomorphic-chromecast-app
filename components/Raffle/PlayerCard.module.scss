@@ -1,0 +1,52 @@
+.playerCard {
+  display: flex;
+  padding: var(--spacing-6);
+  color: var(--text-color);
+  border: 1px solid var(--border-color);
+  border-radius: var(--border-radius);
+  width: 200px;
+  flex-shrink: 0;
+}
+
+.sol {
+  background-color: var(--sol);
+  color: var(--svart) !important;
+  border: none !important;
+}
+.soloppgang {
+  background-color: var(--soloppgang);
+  color: var(--svart) !important;
+  border: none !important;
+}
+.solnedgang {
+  background-color: var(--solnedgang);
+  color: var(--svart) !important;
+  border: none !important;
+}
+.kveld {
+  background-color: var(--kveld);
+  color: var(--svart) !important;
+  border: none !important;
+}
+.hav {
+  background-color: var(--hav);
+  color: var(--svart) !important;
+  border: none !important;
+}
+.skyfritt {
+  background-color: var(--skyfritt);
+  color: var(--svart) !important;
+  border: none !important;
+}
+
+.name {
+  text-align: center;
+  margin: auto;
+  vertical-align: middle;
+  color: inherit;
+  font-size: var(--font-size-md);
+}
+
+.hidden {
+  visibility: hidden;
+}

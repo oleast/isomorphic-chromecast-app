@@ -33,7 +33,7 @@ export const createPlayer = (name: string): Player => ({
   name,
   id: generateUniqueId(),
   createdAt: new Date().toISOString(),
-  color: selectRandom(PLAYER_COLORS),
+  color: selectRandom(PLAYER_COLORS, 'uniform'),
   frequency: 1,
   status: 'active',
 });

@@ -1,3 +1,4 @@
+import { Shotteboksen } from 'components/Shotteboksen';
 import { NextPage } from 'next';
 import { useCallback, useEffect, useState } from 'react';
 
@@ -38,12 +39,7 @@ export const Chromecast: NextPage = () => {
 
   return (
     <div className={_s.chromecastApp}>
-      <h1 style={{ color: '#eeeeee' }}>TEST</h1>
-      <ul>
-        {messages.map((message, i) => (
-          <li key={message + '_-_' + i}>{message}</li>
-        ))}
-      </ul>
+      <Shotteboksen />
     </div>
   );
 };
