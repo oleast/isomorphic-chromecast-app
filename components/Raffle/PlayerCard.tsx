@@ -1,4 +1,4 @@
-import { PlayerColor } from 'features/players/player';
+import { Player, PlayerColor } from 'features/players/player';
 import { forwardRef, useCallback, useRef, useState } from 'react';
 import cx from 'classnames';
 import mergeRefs from 'react-merge-refs';
@@ -8,6 +8,7 @@ import { useSelector } from 'store/hooks';
 import { playersSelectors } from 'features/players/playersSlice';
 import { shallowEqual } from 'react-redux';
 import { useIntersectionObserver } from 'hooks/useIntersectionObserver';
+import { State } from 'store';
 
 interface Props {
   className?: string;
@@ -49,7 +50,7 @@ export const PlayerCard = forwardRef<HTMLDivElement, Props>(
     useIntersectionObserver(cardRef, handleIntersection);
 
     const { name, color } = useSelector(
-      (state) => playersSelectors.selectById(state.players, playerId),
+      selectPlayerById(playerId),
       shallowEqual
     );
 
@@ -70,3 +71,10 @@ export const PlayerCard = forwardRef<HTMLDivElement, Props>(
 );
 
 PlayerCard.displayName = 'PlayerCard';
+
+const selectPlayerById =
+  (playerId: string) =>
+  (state: State): Player => {
+    // eslint-disable-next-line @typescript-eslint/no-non-null-assertion
+    return playersSelectors.selectById(state.players, playerId)!;
+  };

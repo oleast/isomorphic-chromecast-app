@@ -16,6 +16,8 @@ import _s from './RaffleCarousel.module.scss';
 import { useDispatch, useSelector } from 'store/hooks';
 import { playersSelectors } from 'features/players/playersSlice';
 import { State } from 'store';
+import { RaffleEntry } from 'features/raffle/raffle';
+import { Player } from 'features/players/player';
 
 interface CarouselCSS extends CSSProperties {
   '--x-position': string;
@@ -26,9 +28,10 @@ interface Props {
 }
 
 export const RaffleCarousel: FC<Props> = ({ className }) => {
+  // eslint-disable-next-line @typescript-eslint/no-unused-vars
   const dispatch = useDispatch();
-  const raffleEntries = useSelector((state) => state.raffleGame.entries);
-  const winnerEntryId = useSelector((state) => state.raffleGame.winnerEntryId);
+  const raffleEntries = useSelector(selectRaffleEntries());
+  const winnerEntryId = useSelector(selectRaffleWinnerEntryId());
   const winnerPlayer = useSelector(selectPlayerByRaffleEntryId(winnerEntryId));
 
   const scrollContainerRef = useRef<HTMLDivElement>(null);
@@ -45,7 +48,8 @@ export const RaffleCarousel: FC<Props> = ({ className }) => {
     [String(entryIds)]
   );
 
-  const winnerElementRef = entryCardRefs.get(winnerEntryId);
+  // eslint-disable-next-line @typescript-eslint/no-non-null-assertion
+  const winnerElementRef = entryCardRefs.get(winnerEntryId)!;
 
   useEffect(() => {
     if (winnerElementRef.current && scrollContainerRef.current) {
@@ -88,15 +92,33 @@ export const RaffleCarousel: FC<Props> = ({ className }) => {
   );
 };
 
+const selectRaffleEntries =
+  () =>
+  (state: State): RaffleEntry[] => {
+    // eslint-disable-next-line @typescript-eslint/no-non-null-assertion
+    return state.raffleGame.entries!;
+  };
+
+const selectRaffleWinnerEntryId =
+  () =>
+  (state: State): string => {
+    // eslint-disable-next-line @typescript-eslint/no-non-null-assertion
+    return state.raffleGame.winnerEntryId!;
+  };
+
 const selectPlayerByRaffleEntryId =
-  (raffleEntryId: string) => (state: State) => {
-    const raffleEntry = state.raffleGame.entries.find(
+  (raffleEntryId: string) =>
+  (state: State): Player => {
+    // eslint-disable-next-line @typescript-eslint/no-non-null-assertion
+    const raffleEntry = state.raffleGame.entries!.find(
       (entry) => entry.id === raffleEntryId
     );
+    // eslint-disable-next-line @typescript-eslint/no-non-null-assertion
     const player = playersSelectors.selectById(
       state.players,
-      raffleEntry.contestantId
-    );
+      // eslint-disable-next-line @typescript-eslint/no-non-null-assertion
+      raffleEntry!.contestantId
+    )!;
     return player;
   };
 
