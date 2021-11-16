@@ -51,6 +51,8 @@ export const RaffleCarousel: FC<Props> = ({ className }) => {
   // eslint-disable-next-line @typescript-eslint/no-non-null-assertion
   const winnerElementRef = entryCardRefs.get(winnerEntryId)!;
 
+  const handleStartEndGame = () => {};
+
   useEffect(() => {
     if (winnerElementRef.current && scrollContainerRef.current) {
       const scrollContainer = scrollContainerRef.current;
