@@ -23,6 +23,8 @@ export const Shotteboksen: FC = () => {
   );
   const playState = useSelector((state) => state.raffleGame.playState);
 
+  const playerCount = allPlayerIds.length;
+
   useEffect(() => {
     if (!allPlayerIds.length) {
       return;
@@ -48,27 +50,9 @@ export const Shotteboksen: FC = () => {
     return () => clearTimeout(timeoutId);
   }, [intervalMin, intervalMax, raffleListLength, allPlayerIds]);
 
-  useEffect(() => {
-    const testPlayerNames = [
-      'Reynaldo Randolph',
-      'Lexie Fernandez',
-      'Reuben Dixon',
-      'Jefferson Chandler',
-      'Riley Keith',
-      'Malcolm Brooks',
-      'Max Knight',
-      'Christine Mcdaniel',
-      'Kaden Cortez',
-      'Zain Fuentes',
-      'Quinn Moran',
-      'Sadie Schmitt',
-    ];
-    const testPlayers = testPlayerNames.map((name) => createPlayer(name));
-    testPlayers.forEach((testPlayer) => dispatch(playerAdded(testPlayer)));
-  }, [dispatch]);
-
   return (
     <div className={_s.container}>
+      <p>Antall spillere: {playerCount}</p>
       {playState === 'playing' ? <RaffleCarousel /> : null}
     </div>
   );

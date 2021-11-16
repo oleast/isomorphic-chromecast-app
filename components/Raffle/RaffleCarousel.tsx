@@ -18,6 +18,7 @@ import { playersSelectors } from 'features/players/playersSlice';
 import { State } from 'store';
 import { RaffleEntry } from 'features/raffle/raffle';
 import { Player } from 'features/players/player';
+import { gameEnded } from 'features/raffle/raffleGameSlice';
 
 interface CarouselCSS extends CSSProperties {
   '--x-position': string;
@@ -51,6 +52,12 @@ export const RaffleCarousel: FC<Props> = ({ className }) => {
   // eslint-disable-next-line @typescript-eslint/no-non-null-assertion
   const winnerElementRef = entryCardRefs.get(winnerEntryId)!;
 
+  const handleStartEndGame = () => {
+    setTimeout(() => {
+      dispatch(gameEnded());
+    }, 5000);
+  };
+
   useEffect(() => {
     if (winnerElementRef.current && scrollContainerRef.current) {
       const scrollContainer = scrollContainerRef.current;
@@ -75,6 +82,7 @@ export const RaffleCarousel: FC<Props> = ({ className }) => {
       <div
         className={_s.carousel}
         style={{ '--x-position': `-${winnerPositionX}px` } as CarouselCSS}
+        onTransitionEnd={handleStartEndGame}
       >
         {raffleEntries.map((entry, index) => (
           <PlayerCard

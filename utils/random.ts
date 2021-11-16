@@ -4,8 +4,8 @@ export const randomInInterval = (min: number, max: number): number => {
   return Math.random() * (max - min) + min;
 };
 
-const getRandomIndex = (max: number) => {
-  return Math.floor(randomInInterval(0, max));
+const getRandomIndex = (length: number) => {
+  return Math.floor(Math.random() * length);
 };
 
 let prevValue: unknown | null = null;
@@ -15,7 +15,8 @@ function tryAgainIfEqual<TReturnValue>(
 ): TReturnValue {
   const returnValue = callback();
   if (returnValue === prevValue) {
-    return tryAgainIfEqual(callback);
+    // return tryAgainIfEqual(callback);
+    return returnValue;
   } else {
     prevValue = returnValue;
     return returnValue;
