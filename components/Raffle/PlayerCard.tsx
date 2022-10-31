@@ -1,7 +1,7 @@
 import { Player, PlayerColor } from 'features/players/player';
 import { forwardRef, useCallback, useRef, useState } from 'react';
 import cx from 'classnames';
-import mergeRefs from 'react-merge-refs';
+import { mergeRefs } from 'react-merge-refs';
 
 import _s from './PlayerCard.module.scss';
 import { useSelector } from 'store/hooks';
